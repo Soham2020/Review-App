@@ -22,12 +22,5 @@ const screens = {
     }
 }
 
-const HomeStack = createStackNavigator(screens, {
-    defaultNavigationOptions: {
-        headerStyle: {
-            backgroundColor: 'orange',
-            height: 100,
-        },
-    }
-});
+const HomeStack = createStackNavigator(screens);
 export default HomeStack;

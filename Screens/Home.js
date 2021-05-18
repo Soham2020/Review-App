@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, Modal, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Modal, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Card from '../shared/Card';
 import { GlobalStyles } from '../styles/Global';
 import { MaterialIcons } from '@expo/vector-icons';
+import ReviewForm from './ReviewForm';
 
 export default function Home ({ navigation }) {
     const [ modalOpen, setModalOpen ] = useState(false);
@@ -11,18 +12,27 @@ export default function Home ({ navigation }) {
         { title: 'Gotta Catch them all', rating: 2, body: 'Air is Carbon', key: 2 },
         { title: 'Not so final fantasy', rating: 4, body: 'Air is hydrogen', key: 3 },
     ])
+    const addReview = (review) => {
+        review.key = Math.random().toString()
+        setReviews(( currReview ) => {
+            return [ ...currReview, review ]
+        })
+        setModalOpen(false);
+    } 
     return(
         <View style={GlobalStyles.container}>
             <Modal visible={modalOpen} animationType="fade">
-                <View style={styles.modalContent}>
-                    <MaterialIcons 
-                        name="close"
-                        size={24}
-                        onPress={() => setModalOpen(false)}
-                        style={{ ...styles.modalToggle, ...styles.modalClose }}
-                    />
-                    <Text>Hello Forms :)</Text>
-                </View>
+                <TouchableWithoutFeedback onPress={ Keyboard.dismiss }>
+                    <View style={styles.modalContent}>
+                        <MaterialIcons 
+                            name="close"
+                            size={24}
+                            onPress={() => setModalOpen(false)}
+                            style={{ ...styles.modalToggle, ...styles.modalClose }}
+                        />
+                        <ReviewForm addReview={addReview} />
+                    </View>
+                </TouchableWithoutFeedback>
             </Modal>
             <MaterialIcons 
                 name="add"

@@ -23,6 +23,13 @@ export const GlobalStyles = StyleSheet.create({
     },
     btn: {
         marginTop: 10,
+    },
+    errorTxt: {
+        color: 'crimson',
+        fontWeight: 'bold',
+        marginBottom: 10,
+        marginTop: 6,
+        textAlign: 'center',
     }
 })
 

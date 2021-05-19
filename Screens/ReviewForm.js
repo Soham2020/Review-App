@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button } from 'react-native';
 import { Formik } from 'formik';
 import { GlobalStyles } from '../styles/Global';
 import ReviewSchema from '../Schema/ReviewSchema';
+import FlatButton from '../shared/FlatButton';
 
 export default function ReviewForm( props ) {       // here we props instead of destructuring like { addReview }
     return(
@@ -44,11 +45,7 @@ export default function ReviewForm( props ) {       // here we props instead of 
                         />
                         <Text style={GlobalStyles.errorTxt}> { props.touched.rating && props.errors.rating } </Text>
                         <View style={GlobalStyles.btn}>
-                        <Button 
-                            title='Submit'
-                            color='maroon'
-                            onPress={props.handleSubmit}
-                        />
+                        <FlatButton title='Submit' onPress={props.handleSubmit} />
                         </View>
                     </View>
                 )}

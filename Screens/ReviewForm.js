@@ -28,6 +28,7 @@ export default function ReviewForm( props ) {       // here we props instead of 
                         <Text style={GlobalStyles.errorTxt}> { props.touched.title && props.errors.title } </Text>
                         <TextInput 
                             multiline
+                            minheight={60}
                             style={GlobalStyles.input}
                             placeholder='Body'
                             onChangeText={props.handleChange('body')}

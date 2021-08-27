@@ -1,2 +1,2 @@
-# `Review-App`
-It is a React-Native Review App
+# `Review App`
+It is an android Review App.
